@@ -10,6 +10,6 @@ public class EntityRendererProxy_InvTweaks extends lo {
 
     public void b(float tick) {
         super.b(tick);
-        ModLoader_InvTweaks.OnTick(tick, this.game);
+        ModLoader_InvTweaks.onTick(tick, this.game);
     }
 }

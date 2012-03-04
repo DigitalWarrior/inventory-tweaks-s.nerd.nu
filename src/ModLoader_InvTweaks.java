@@ -60,7 +60,7 @@ public abstract class ModLoader_InvTweaks {
         return instance;
     }
 
-    public static void RegisterKey(BaseMod_InvTweaks mod, afp keyBinding, boolean repeat) {
+    public static void registerKey(BaseMod_InvTweaks mod, afp keyBinding, boolean repeat) {
         keyMap.put(keyBinding, new boolean[] { repeat, false });
         
         // Add binding to key settings
@@ -84,11 +84,11 @@ public abstract class ModLoader_InvTweaks {
         
     }
 
-    public static void SetInGameHook(BaseMod_InvTweaks mod, boolean enable, boolean useClock) {
+    public static void setInGameHook(BaseMod_InvTweaks mod, boolean enable, boolean useClock) {
         // Do nothing, InvTweaks is registered in the code
     }
 
-    public static void SetInGUIHook(BaseMod_InvTweaks mod, boolean enable, boolean useClock) {
+    public static void setInGUIHook(BaseMod_InvTweaks mod, boolean enable, boolean useClock) {
         // Do nothing, InvTweaks is registered in the code
     }
 
@@ -114,18 +114,18 @@ public abstract class ModLoader_InvTweaks {
             throw new RuntimeException(e);
     }
 
-    public static void OnTick(float tick, Minecraft game) {
+    public static void onTick(float tick, Minecraft game) {
 
         long newclock = 0L;
 
         if (obf.getTheWorld() != null) {
             newclock = obf.getTheWorld().w(); // getCurrentTime()
             if (clock != newclock) {
-                mod.OnTickInGame(0, game);
+                mod.onTickInGame(0, game);
             }
         }
         if (obf.getCurrentScreen() != null && clock != newclock) {
-            mod.OnTickInGUI(0, instance, obf.getCurrentScreen());
+            mod.onTickInGUI(0, instance, obf.getCurrentScreen());
         }
         if (clock != newclock) {
             for (afp keyBinding : keyMap.keySet()) {
@@ -134,7 +134,7 @@ public abstract class ModLoader_InvTweaks {
                 boolean oldState = keyInfo[1];
                 keyInfo[1] = state;
                 if ((state) && (!oldState || keyInfo[0])) {
-                    mod.KeyboardEvent(keyBinding);
+                    mod.keyboardEvent(keyBinding);
                 }
             }
         }

@@ -6,12 +6,12 @@ public abstract class BaseMod_InvTweaks {
 
 	public abstract String getVersion();
 
-	public abstract void KeyboardEvent(afp keyBinding);
+	public abstract void keyboardEvent(afp keyBinding);
 
-	public abstract boolean OnTickInGame(float clock, Minecraft minecraft);
+	public abstract boolean onTickInGame(float clock, Minecraft minecraft);
 
-	public abstract boolean OnTickInGUI(float clock, Minecraft minecraft, vl guiScreen);
+	public abstract boolean onTickInGUI(float clock, Minecraft minecraft, vl guiScreen);
 
-	public abstract void OnItemPickup(yr entityplayer, aai stack);
+	public abstract void onItemPickup(yr entityplayer, aai stack);
 
 }
